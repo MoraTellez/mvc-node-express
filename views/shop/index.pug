@@ -1,0 +1,24 @@
+extends ../layouts/main-layout.pug
+
+block styles
+  link(rel="stylesheet", href="../css/product.css")
+
+block content
+  main
+    if prods.length > 0
+      div.grid
+        each product in prods
+          article.card.product-item
+            header.card__header
+              h1.product__title #{product.title} 
+            div.card__image
+              image(src=product.imageUrl alt="A book")
+            div.card__content
+              h2.product__price $#{product.price}
+              P.product__description #{product.description}
+            div.card__actions 
+              include ../includes/add-to-cart
+    else 
+      h1 No products
+
+
